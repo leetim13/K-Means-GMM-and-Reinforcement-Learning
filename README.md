@@ -6,10 +6,11 @@ stochastic maze environment.
 <p>
   <img src="samples/original.png" width="300" height = "250">
   <img src="samples/gm.png" width="300" height = "250">
-  <img src="samples/maze.png" width="280" height = "200">
  </p>
- 
+ <p>
+ <img src="samples/maze.png" width="280" height = "200">
  <img src="samples/training.png" width="300" height = "200">
+  </p>
 
 ## Implementations include:
 * `maze.py` defines the MazeEnv class, the simulation environment which the Q-learning agent will interact in.
