@@ -142,7 +142,7 @@ class MazeEnv:
 
 
 class ProbabilisticMazeEnv(MazeEnv):
-    """ (Q2.3) Hints: you can refer the implementation in MazeEnv 
+    """ 
     """
     
     def __init__(self, goals=[[2, 8]], p_random=0.05):

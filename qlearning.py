@@ -31,13 +31,13 @@ def qlearn(env, num_iters, alpha, gamma, epsilon, max_steps, use_softmax_policy,
     q_hat = np.zeros(shape=(state_space_size, action_space_size))
     steps_vs_iters = np.zeros(num_iters)
     for i in range(num_iters):
-        # TODO: Initialize current state by resetting the environment
+        # Initialize current state by resetting the environment
         curr_state = env.reset()
         num_steps = 0
         done = False  
         if k_exp_sched is None: #use default k of 0.1
             k_exp_sched = 0.1
-        # TODO: Keep looping while environment isn't done and less than maximum steps
+        # Keep looping while environment isn't done and less than maximum steps
         while (num_steps < max_steps) and not done:
             num_steps += 1
             # Choose an action using policy derived from either softmax Q-value 
@@ -45,21 +45,21 @@ def qlearn(env, num_iters, alpha, gamma, epsilon, max_steps, use_softmax_policy,
             if use_softmax_policy:
                 assert(init_beta is not None)
              #   assert(k_exp_sched is not None)
-                # TODO: Boltzmann stochastic policy (softmax policy)
+                # Boltzmann stochastic policy (softmax policy)
                 beta = beta_exp_schedule(init_beta, num_iters, k_exp_sched) # Call beta_exp_schedule to get the current beta value
                 action = softmax_policy(q_hat, beta, curr_state)
             else:
-                # TODO: Epsilon-greedy
+                # Epsilon-greedy
                 action = epsilon_greedy(q_hat, epsilon, curr_state, action_space_size)
-            # TODO: Execute action in the environment and observe the next state, reward, and done flag
+            # Execute action in the environment and observe the next state, reward, and done flag
             next_state, reward, done = env.step(action)
-            # TODO: Update Q_value
+            # Update Q_value
             if next_state != curr_state:
                 new_value = reward + gamma * max(q_hat[next_state])
-                # TODO: Use Q-learning rule to update q_hat for the curr_state and action:
+                # Use Q-learning rule to update q_hat for the curr_state and action:
                 # i.e., Q(s,a) <- Q(s,a) + alpha*[reward + gamma * max_a'(Q(s',a')) - Q(s,a)]
                 q_hat[curr_state, action] += alpha * (new_value - q_hat[curr_state, action] ) 
-                # TODO: Update the current state to be the next state
+                # Update the current state to be the next state
                 curr_state = next_state
         steps_vs_iters[i] = num_steps
     return q_hat, steps_vs_iters
