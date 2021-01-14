@@ -4,8 +4,8 @@ stochastic maze environment.
 - Unsupervised Learning-Clustering: Experimented and evaluated both k-Means and EM algorithm with Gaussian mixtures on different data clusters.
 
 <p>
-  <img src="samples/original.png" width="300" height = "250">
-  <img src="samples/gm.png" width="300" height = "250">
+  <img src="samples/original.png" width="320" height = "250">
+  <img src="samples/gm.png" width="320" height = "250">
  </p>
  <p>
  <img src="samples/maze.png" width="280" height = "200">
